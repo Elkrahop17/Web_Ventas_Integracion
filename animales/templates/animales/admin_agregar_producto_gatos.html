@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Agregar Producto para gatos</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+</head>
+<body>
+    
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        Agregar Producto para gatos
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="{{ form.nombre.id_for_label }}" class="form-label">Nombre</label>
+                                {{ form.nombre }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="{{ form.precio.id_for_label }}" class="form-label">Precio</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    {{ form.precio }}
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="{{ form.stock.id_for_label }}" class="form-label">Stock</label>
+                                {{ form.stock }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="{{ form.imagen.id_for_label }}" class="form-label">Imagen</label>
+                                {{ form.imagen }}
+                            </div>
+                            <div class="mb-3">
+                                <label for="{{ form.minutos.id_for_label }}" class="form-label">Minutos</label>
+                                {{ form.minutos }}
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                <a href="{% url 'lista_productos' %}" class="btn btn-secondary">Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="{% static 'bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

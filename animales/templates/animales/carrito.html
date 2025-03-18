@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Carrito</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_carrito.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+
+
+</head>
+<body>
+
+<!--Encabezado del sitio web-->
+    <section class="container-mt-4">
+        <header>
+            <h5>Bienvenidos a nuestra pagina ¿Quieres saber quienes somos?</h5>
+            <a href="{% url 'QuienesSomos' %}">Presiona aquí para conocernos</a> 
+            <a href="{% url 'ayuda' %}">Sección de ayuda</a>  
+            <a href="{% url 'informacion' %}">Más de información</a>
+        </header>
+    </section>
+<!--Navbar de la pagina web-->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a id="logo" class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'img/Logo.png' %}" width="45px" height="100px" alt="Logo">Pet Amigos
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="¿Qué productos estés buscando?" aria-label="Search">
+                    <button id="btnsearch" class="btn btn-outline-dark" type="submit">
+                        <img src="{% static 'img/search.svg' %}" alt="buscar">
+                    </button>
+                </form>
+
+                <li id="moon-dark" class="nav-item">
+                    <a id="darkModeToggle" class="nav-link active" href="javascript:void(0)">
+                        <img id="darkModeIcon" src="{% static 'img/moon-solid.svg' %}" alt="Modo Oscuro" style="width: 24px; height: 24px;">
+                        <span id="modeToggleText">Modo Oscuro</span>
+                    </a>
+                </li>
+                
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a id="sesion" class="nav-link active" aria-current="page" href="{% url 'inicioDeSesion' %}">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'favoritos' %}">
+                            <img src="{% static 'img/heart.svg' %}" alt="favoritos">
+                        </a>
+                    </li>
+                    <li class="nav-item position-relative">
+                        <a class="nav-link active" aria-current="page" href="{% url 'ver_carrito' %}">
+                            <img src="{% static 'img/shopping-cart.svg' %}" alt="compras" style="width: 24px; height: 24px;">
+                            <span id="contadorCarrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger badge-carrito">
+                                0 <!-- Aquí se actualizará el contador dinámicamente -->
+                                <span class="visually-hidden">productos en el carrito</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!--Navbar de las categorias-->
+    <nav id="navbarcategorias" class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Categorías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'productosPerro' %}">Perrunos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'productosGato' %}">Gatunos</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    🔥 ¡OBTÉN 10% DCTO!
+                </span>
+            </div>
+        </div>
+    </nav>
+
+<!--productos del carrito de compras-->
+<div class="container content-container">
+    <h2 class="mb-4 text-center">
+        <i class="bi bi-cart"></i> Carrito de compras
+    </h2>
+
+    {% if carrito_items %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+            {% for item in carrito_items %}
+            <div class="col mb-4">
+                <div class="card h-100 d-flex align-items-center justify-content-center">
+                    {% if item.producto %}
+                        <img src="{{ item.producto.imagen.url }}" class="card-img-top" style="height: 200px; width: 200px;" alt="{{ item.producto.nombre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.producto.nombre }}</h5>
+                            <p class="card-text">Cantidad: {{ item.cantidad }}</p>
+                            <p class="card-text">Precio unitario: ${{ item.producto.precio }}</p>
+                            <form method="post" action="{% url 'eliminar_del_carrito' item.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        </div>
+                    {% elif item.producto_perros %}
+                        <img src="{{ item.producto_perros.imagen.url }}" class="card-img-top" style="height: 200px; width: 200px;" alt="{{ item.producto_perros.nombre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.producto_perros.nombre }}</h5>
+                            <p class="card-text">Cantidad: {{ item.cantidad }}</p>
+                            <p class="card-text">Precio unitario: ${{ item.producto_perros.precio }}</p>
+                            <form method="post" action="{% url 'eliminar_del_carrito' item.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        </div>
+                    {% elif item.producto_gatos %}
+                        <img src="{{ item.producto_gatos.imagen.url }}" class="card-img-top" style="height: 200px; width: 200px;" alt="{{ item.producto_gatos.nombre }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.producto_gatos.nombre }}</h5>
+                            <p class="card-text">Cantidad: {{ item.cantidad }}</p>
+                            <p class="card-text">Precio unitario: ${{ item.producto_gatos.precio }}</p>
+                            <form method="post" action="{% url 'eliminar_del_carrito' item.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Total y botón Comprar -->
+        <div class="row mt-4">
+            <div class="col text-end">
+                <h5>Total: ${{ total }}</h5>
+                <form method="post" action="{% url 'comprar_carrito' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success btn-lg mt-3">Comprar</button>
+                </form>
+            </div>
+        </div>
+
+        {% else %}
+        <div class="alert alert-info alert-info-empty text-center" role="alert">
+            <h4 class="alert-heading">Tu carrito está vacío</h4>
+            <p>¡Parece que aún no has agregado productos a tu carrito! Explora nuestros productos y añade tus favoritos.</p>
+            <hr>
+            <p class="mb-0">Visita nuestra <a href="{% url 'index' %}" class="alert-link">página de productos</a> para empezar a comprar.</p>
+        </div>
+        {% endif %}
+
+
+    <div class="text-center mt-4">
+        <a href="{% url 'inicioDeSesion' %}" class="btn btn-primary btn-custom mx-2">Iniciar sesión</a>
+        <a href="{% url 'registro' %}" class="btn btn-secondary btn-custom mx-2">Registrarse</a>
+    </div>
+</div>
+    
+    <!--Pie de pagina del sitio web-->
+    <footer class="footer py-3">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sección sobre nosotros -->
+                <div class="col-md-4">
+                    <div class="about-us">
+                        <h5>Sobre nosotros</h5>
+                        <p>PetAmigos es la tienda en línea líder para todos los amantes de las mascotas. Ofrecemos una amplia gama de productos para todas las necesidades de tus amigos peludos.</p>
+                    </div>
+                </div>
+                <!-- Sección enlaces útiles -->
+                <div class="col-md-4 text-center">
+                    <h5 class="mb-3">Enlaces útiles</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'QuienesSomos' %}">Sobre nosotros</a></li>
+                        <li><a href="{% url 'ayuda' %}">Ayuda</a></li>
+                        <li><a href="{% url 'informacion' %}">Información</a></li>
+                    </ul>
+                </div>
+                <!-- Sección de redes sociales -->
+                <div class="col-md-4 text-center">
+                    <h5 class="mb-3">Síguenos</h5>
+                    <div class="d-flex justify-content-center flex-column align-items-center">
+                        <a href="#" class="mb-2"><img src="{% static 'img/twitter.svg' %}" alt="Twitter" class="social-icon"></a>
+                        <a href="#"><img src="{% static 'img/instagram.svg' %}" alt="Instagram" class="social-icon"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col text-center">
+                    <p>&copy; 2024 PetAmigos. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const moonIconPath = "{% static 'img/moon-solid.svg' %}";
+        const sunIconPath = "{% static 'img/sun-solid.svg' %}";
+    </script>   
+
+    <script src="{% static 'js/agregarProductos.js' %}"></script>  
+    <script src="{% static 'js/cambiarModoOscuro.js' %}"></script>  
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="{% static 'bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

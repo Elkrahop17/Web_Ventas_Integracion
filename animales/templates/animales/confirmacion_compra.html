@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Compra</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_carrito.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Confirmación de Compra</h2>
+                <h4 class="text-center">Pedido ID: {{ pedido.id }}</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in pedido.items.all %}
+                        <tr>
+                            <td>
+                                {% if item.producto %}
+                                    {{ item.producto.nombre }}
+                                {% elif item.producto_perros %}
+                                    {{ item.producto_perros.nombre }}
+                                {% elif item.producto_gatos %}
+                                    {{ item.producto_gatos.nombre }}
+                                {% endif %}
+                            </td>
+                            <td>{{ item.cantidad }}</td>
+                            <td>
+                                {% if item.producto %}
+                                    ${{ item.producto.precio }}
+                                {% elif item.producto_perros %}
+                                    ${{ item.producto_perros.precio }}
+                                {% elif item.producto_gatos %}
+                                    ${{ item.producto_gatos.precio }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="text-end">
+                    <h4>Total: ${{ pedido.total|floatformat:3 }}</h4>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{% url 'index' %}" class="btn btn-primary">Volver a la tienda</a>

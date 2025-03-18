@@ -1,0 +1,257 @@
+/*importaciones de estilos de letras*/
+@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Passion+One:wght@400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Passion+One:wght@400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    
+    
+/* Estilo del encabezado */
+header {
+    background-color: rgb(35, 2, 35);
+    padding: 20px 0; /*establece el relleno superior e inferior en 20 píxeles y no establece ningún relleno para los lados izquierdo y derecho.*/
+    text-align: center; 
+}   
+/* Estilo del encabezado h5 */
+header h5 {
+    margin: 0; /* Se utiliza para eliminar cualquier espacio adicional alrededor del texto dentro del <h5>*/
+    color: #fff; /*Se utilizo para agregar un espacio de 20 píxeles entre el texto del <h5> y el borde inferior del encabezado.*/
+    padding-bottom: 20px;
+    font-family: "Passion One", sans-serif;
+    font-size: 25px;
+}
+/* Estilo de los enlaces en el encabezado */
+header a {
+    color: #ffffff;
+    text-align: center;
+    margin-left: 30px; /*para agregar un espacio de 20 píxeles entre el texto del <h5> y el borde inferior del encabezado.*/
+    text-decoration: none; /*Esto significa que no habrá ninguna decoración aplicada a los enlaces cuando estén en su estado normal*/
+    font-size: 18px;
+    font-family: "League Spartan", sans-serif;
+}
+/* Estilo de los enlaces en el encabezado al pasar el mouse */
+header a:hover {
+    color: #4c6ca8; /* Cambia el color al pasar el mouse */
+}
+/* Media query para pantallas pequeñas */
+@media only screen and (max-width: 600px) {
+    header h5 {
+        font-size: 24px;
+    }
+}
+/* Estilo de la barra de navegación */
+.navbar {
+    margin-top: -18px;  /*establece un margen superior de -18 píxeles.*/
+    background-color: rgb(68, 8, 65);
+}
+/* Estilo del formulario dentro de la barra de navegación */
+.navbar form {
+    width: 60%; /*establece el ancho del formulario al 60% del ancho de su contenedor.*/
+    margin: auto; /*aplica márgenes automáticos al formulario*/   
+}
+/* Estilo de la clase row */
+.row {
+    margin-top: 20px;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 15px; /*proporciona un espacio inferior de 15 píxeles para separar visualmente los elementos.*/
+    font-family: "Passion One", sans-serif;
+    font-size: 30px;
+}
+/* Estilo del texto dentro de la clase card-tex */
+.card-text{
+    color: #d41212;
+}
+/* Estilo de la clase card */
+.card {
+    text-align: center;
+}
+/* Estilo de la imagen superior de la clase card */
+.card-img-top {
+    width: 30%;
+    margin: auto;
+    margin-top: 10px;
+}
+
+/* Estilos para el modo oscuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0; /* Texto en color claro */
+}
+
+header.dark-mode {
+    background-color: #333; /* Fondo del header */
+    color: #e0e0e0; /* Texto en el header */
+}
+
+.navbar.dark-mode {
+    background-color: #444; /* Fondo de la navbar */
+}
+
+header.dark-mode a {
+    color: #e0e0e0; /* Enlaces en el header */
+}
+
+.navbar-dark-mode .nav-link {
+    color: #e0e0e0; /* Enlaces en la navbar */
+}
+
+.navbar-dark-mode .nav-link:hover {
+    color: #ffcc00; /* Enlaces al pasar el mouse en la navbar */
+}
+
+footer.dark-mode {
+    background-color: #333; /* Fondo del footer */
+    color: #e0e0e0; /* Texto en el footer */
+}
+
+.card.dark-mode {
+    background-color: #2a2a2a; /* Fondo de las tarjetas */
+    color: #e0e0e0; /* Texto en las tarjetas */
+}
+
+#moon-dark {
+    list-style: none;
+}
+
+/* Estilos para el texto de alternar modo */
+#modeToggleText {
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    color: #ffffff;
+}
+
+/* Estilo del elemento navbarcategorias */
+#navbarcategorias {
+    margin-top: 0;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    color: #000;
+    font-family: "Passion One", sans-serif;
+    font-size: 22px;
+}
+/* Estilo del elemento logo */
+#logo {
+    color: aliceblue;
+    font-family: "Bungee", sans-serif;
+    font-size: 35px;
+    margin-left: 40px; /*Se define un margen izquierdo de 40 píxeles para el elemento*/
+    margin-right: 50px;  /*Se define un margen derecho de 50 píxeles para el elemento */
+}
+
+#logo img {
+    height: 45px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+/* Estilo del elemento sesion */
+#sesion {
+    color: aliceblue;
+    margin-left: 20px;
+}
+/* Estilo del elemento sesion al pasar el mouse */
+#sesion:hover {
+    color: #879eea; 
+}
+/* Estilo del botón de búsqueda */
+#btnsearch {
+    border-radius: 40px; /*establece el radio de los bordes del botón de búsqueda en 40 píxeles*/
+    border: #e90404;
+    color: #000;
+}
+
+.heart-icon {
+    width: 24px; /* Ajusta el tamaño del icono */
+    height: 24px; /* Ajusta el tamaño del icono */
+}
+
+/* Estilo del pie de página */
+.footer {
+    background-color: rgb(68, 8, 65);
+    color: azure;
+    padding-top: -250px;
+    padding-bottom: -20px;
+}
+
+.footer h5 {
+    font-family: "Passion One", sans-serif;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+
+.footer p, .footer a {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+}
+
+.footer a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #ffffff;
+}
+
+.footer .list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer .list-unstyled li {
+    margin-bottom: 3px; /* Ajusta el espacio entre los enlaces */
+}
+
+.footer .list-unstyled li a {
+    display: block;
+    padding: 2px 0; /* Agrega un pequeño espacio vertical */
+}
+
+
+.footer .d-flex a {
+    display: inline-block;
+    color: #ffcc00;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer .d-flex a:hover {
+    color: #ffffff;
+}
+
+.footer p {
+margin-bottom: 0;
+}
+
+/* Estilo del cuerpo */
+body {
+    background-color: #fdfcfc;
+}
+
+.btn-agregar-carrito {
+    background-color: #ff5722; /* Color llamativo */
+    color: #ffffff; /* Color del texto */
+    border: none; /* Sin bordes */
+    padding: 10px 20px; /* Relleno */
+    font-size: 16px; /* Tamaño de fuente */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.btn-agregar-carrito:hover {
+    background-color: #e64a19; /* Color al pasar el mouse */
+}
+
+.btn-agregar-carrito:active {
+    background-color: #d84315; /* Color al hacer clic */
+}
+
+/* Estilo del elemento carouselExampleIndicators */
+#carouselExampleIndicators {
+    margin-top: 30px;
+}
+
+/* Estilo del elemento listafavoritos */
+#listafavoritos {
+    text-align: center;
+}

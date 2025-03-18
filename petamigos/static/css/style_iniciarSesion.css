@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
+    /* Estilo del contenedor del formulario */
+    .form-container {
+        width: 22%;
+        padding: 50px; /* Esto agrega un relleno de 50 píxeles en todas las direcciones dentro del contenedor. */
+        background-color: #171717;
+        position: relative;
+        margin-right: 100px; /* Añade margen a la derecha para separar del contenedor central */
+    }
+
+    /* Estilo del divisor de etiquetas del formulario */
+    .form-label-divider {
+        margin-top: 10px; /* Ajusta el espacio superior según sea necesario */
+        padding-top: 20px; /* Ajusta el espacio superior según sea necesario */
+        width: 100%;
+    }
+
+    /* Estilo de la tarjeta */
+    .card {
+        border-radius: 20px 0 0 20px;
+    }
+
+    /* Estilo del contenedor central */
+    .center-container {
+        display: flex;  /*Esto establece el contenedor como un contenedor flexible, lo que permite utilizar las propiedades de alineación flexbox.*/
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    /* Estilo de la imagen dentro del contenedor central */
+    .center-container img {
+        border-radius: 0 20px 20px 0;
+    }
+
+    /* Estilo del botón circular */
+    .btn-circular {
+        border-radius: 10px;
+        height: 45px;
+    }
+
+    /* Estilo del elemento divlogo */
+    #divlogo {
+        color: rgb(255, 255, 255);
+        font-family: "Bungee", sans-serif;
+        font-size: 35px;
+        text-align: center;
+        margin-bottom: 20px; /* Añade margen inferior para separar del siguiente elemento */
+    }
+
+    /* Estilo de los botones con id btn1, btn2 y btn3 */
+    #btn1, #btn2, #btn3 {
+        text-align: left;
+    }
+
+    /* Estilo del elemento registro */
+    #registro {
+        text-align: center;
+        color: #ffffff;
+        margin-top: 20px;
+        margin-bottom: 20px; /* Añade margen inferior para separar del siguiente elemento */
+    }
+
+    /* Estilo del botón login */
+    .btnlogin {
+        width: 110%;
+    }
+
+    /* Estilo del botón café */
+    .btn-cafe {
+        color: #ffffff;
+        background-color: #28292D; /* Color café */
+        width: 100%;
+        margin-bottom: 10px; /* Añade margen inferior entre botones */
+    }
+
+    /* Estilo del botón café al pasar el mouse */
+    .btn-cafe:hover {
+        color: #ffffff;
+        background-color: #44433f; /* Color café más oscuro al pasar el ratón */
+    }
+
+    .btn-register {
+        background-color: #007bff;
+        border-color: #007bff;
+        color: #ffffff;
+        margin-top: 10px; /* Ajuste el margen superior según sea necesario */
+        width: 100%;
+        display: block; /* Hace que el enlace sea de ancho completo */
+        text-align: center; /* Centra el texto dentro del botón */
+        padding: 10px; /* Añade relleno dentro del botón */
+    }
+
+    /* Estilo del botón de registro al pasar el mouse */
+    .btn-register:hover {
+        background-color: #0056b3; /* Color azul más oscuro al pasar el ratón */
+        border-color: #0056b3; /* Color del borde al pasar el ratón */
+        color: #ffffff; /* Color del texto al pasar el ratón */
+    }
+
+    /* Estilo de elementos con clases mb-3 y form-text */
+    .mb-3, .form-text {
+        color: #ffffff;
+    }
+
+    /* Estilo de los controles de formulario */
+    .form-control {
+        background-color: #111111;
+        color: white;
+    }
+
+    /* Estilo de los inputs con id exampleInputEmail1 y exampleInputPassword1 */
+    #exampleInputEmail1, #exampleInputPassword1 {
+        background-color: #111111;
+    }
+
+    /* Estilo del placeholder del control de formulario */
+    .form-control::placeholder {
+        color: #ffffff;
+    }
+
+    /* Estilo del cuerpo */
+    body {
+        background-image: url("/static/img/conejokawaii.png");
+    }
+
+    .form-group label {
+        font-weight: bold; /* Añade negrita a las etiquetas */
+        margin-bottom: 5px; /* Ajusta el margen inferior */
+        display: block; /* Hace que las etiquetas sean de ancho completo */
+    }
+
+    .mb-3 {
+        margin-bottom: 15px;
+    }
+
+    .social-login .d-grid gap-2 button {
+        margin-bottom: 10px; /* Ajusta el margen inferior entre los botones */
+    }
+
+    

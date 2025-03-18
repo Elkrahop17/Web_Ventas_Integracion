@@ -1,0 +1,29 @@
+body {
+    background-color: #f8f9fa;
+}
+.navbar {
+    margin-bottom: 20px;
+}
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-header {
+    background-color: #007bff;
+    color: white;
+    font-size: 1.25rem;
+}
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+.btn-primary:hover, .btn-secondary:hover {
+    opacity: 0.8;
+}
+.form-label {
+    font-weight: bold;
+}

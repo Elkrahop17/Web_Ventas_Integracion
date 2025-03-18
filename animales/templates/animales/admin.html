@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión Admin</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_admin.css' %}">
+</head>
+<body>
+
+<div class="container mt-4">
+    <a href="{% url 'index' %}" class="btn btn-secondary mb-3 left-corner">Volver al Inicio</a>
+    <h2>Gestión de Productos</h2>
+    <a href="{% url 'agregar_producto' %}" class="btn btn-primary mb-3">Agregar Producto General</a>
+    <a href="{% url 'agregar_producto_perros' %}" class="btn btn-primary mb-3">Agregar Producto para Perros</a>
+    <a href="{% url 'agregar_producto_gatos' %}" class="btn btn-primary mb-3">Agregar Producto para Gatos</a>
+
+    <div class="text-end">
+        <a href="{% url 'salir' %}" class="btn btn-danger">Cerrar Sesión</a>
+    </div>
+    
+    <div class="product-list">
+        <h3>Productos Generales</h3>
+        {% for producto in productos_general %}
+        <div class="product-item bg-light p-3 mb-3 rounded">
+            <div>
+                <strong>{{ producto.nombre }}</strong> - {% if '$' not in producto.precio %}${% endif %}{{ producto.precio }} - Stock: {{ producto.stock }}
+            </div>
+            <div class="mt-2">
+                <a href="{% url 'editar_producto' producto.id %}" class="btn btn-warning me-2">Editar</a>
+                <a href="{% url 'eliminar_producto' producto.id %}" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="product-list">
+        <h3>Productos para Perros</h3>
+        {% for producto in productos_perros %}
+        <div class="product-item bg-light p-3 mb-3 rounded">
+            <div>
+                <strong>{{ producto.nombre }}</strong> - {% if '$' not in producto.precio %}${% endif %}{{ producto.precio }} - Stock: {{ producto.stock }}
+            </div>
+            <div class="mt-2">
+                <a href="{% url 'editar_producto_perros' producto.id %}" class="btn btn-warning me-2">Editar</a>
+                <a href="{% url 'eliminar_producto_perros' producto.id %}" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="product-list">
+        <h3>Productos para Gatos</h3>
+        {% for producto in productos_gatos %}
+        <div class="product-item bg-light p-3 mb-3 rounded">
+            <div>
+                <strong>{{ producto.nombre }}</strong> - {% if '$' not in producto.precio %}${% endif %}{{ producto.precio }} - Stock: {{ producto.stock }}
+            </div>
+            <div class="mt-2">
+                <a href="{% url 'editar_producto_gatos' producto.id %}" class="btn btn-warning me-2">Editar</a>
+                <a href="{% url 'eliminar_producto_gatos' producto.id %}" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="{% static 'bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

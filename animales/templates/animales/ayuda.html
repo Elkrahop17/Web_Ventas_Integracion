@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ayuda</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_ayuda.css' %}">
+
+
+</head>
+<body>
+
+<!--Encabezado del sitio web-->
+    <section class="container-mt-4">
+        <header>
+            <h5>Bienvenidos a nuestra pagina ¿Quieres saber quienes somos?</h5>
+            <a href="{% url 'QuienesSomos' %}">Presiona aquí para conocernos</a> 
+            <a href="{% url 'ayuda' %}">Sección de ayuda</a>  
+            <a href="{% url 'informacion' %}">Más de información</a>
+        </header>
+    </section>
+<!--Navbar de la pagina web-->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a id="logo" class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'img/Logo.png' %}" width="45px" height="100px" alt="Logo">Pet Amigos
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="¿Qué productos estés buscando?" aria-label="Search">
+                    <button id="btnsearch" class="btn btn-outline-dark" type="submit">
+                        <img src="{% static 'img/search.svg' %}" alt="buscar">
+                    </button>
+                </form>
+
+                <li id="moon-dark" class="nav-item">
+                    <a id="darkModeToggle" class="nav-link active" href="javascript:void(0)">
+                        <img id="darkModeIcon" src="{% static 'img/moon-solid.svg' %}" alt="Modo Oscuro" style="width: 24px; height: 24px;">
+                        <span id="modeToggleText">Modo Oscuro</span>
+                    </a>
+                </li>
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a id="sesion" class="nav-link active" aria-current="page" href="{% url 'inicioDeSesion' %}">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'favoritos' %}">
+                            <img src="{% static 'img/heart.svg' %}" alt="favoritos">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'ver_carrito' %}">
+                            <img src="{% static 'img/shopping-cart.svg' %}" alt="compras">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<!--Navbar de las categorias-->
+    <nav id="navbarcategorias" class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Categorías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'productosPerro' %}">Perrunos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'productosGato' %}">Gatunos</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    🔥 ¡OBTÉN 10% DCTO!
+                </span>
+            </div>
+        </div>
+    </nav>
+<!--Contenedor para texto info de ayuda-->
+    <div id="ayuda">
+        <ul>
+            <li><h5>CONTACTO Y AYUDA</h5></li>
+            <li><h1>Hola, ¿En que podemos ayudarte?</h1></li>
+            <li><p>Podemos resolver tus dudas y consultas desde nuestros canales de atención al cliente, que funcionan de Lunes a Viernes de 9:00 a 19:00 hrs..</p></li>
+        </ul>
+    </div>
+<!--Contenedor para poner secciones de ayuda-->
+    <div id="cards-ayuda" class="container-fluid d-flex justify-content-center">
+        <div class="card mx-2">
+            <div class="card-body">
+                <h5 class="card-title">Consultas</h5>
+                <br>
+                <p class="card-text">Realiza tus consultas generales a nuestro correo o nuestro número de contacto.</p>
+            </div>
+            <div class="card-footer">
+                <a href="">contactoPetAmigos@gmail.com</a>
+                <br>
+                <a href="">+56 9 7644 2546</a>
+            </div>
+        </div>
+        <div class="card mx-2">
+            <div class="card-body">
+                <h5 class="card-title">Reclamos y Sugerencias</h5>
+                <br>
+                <p class="card-text">Realiza tu reclamo o sugerencia al siguiente correo, donde podremos ayudarte.</p>
+            </div>
+            <div class="card-footer">
+                <a href="">reclamosPetAmigo@gmail.com</a>
+            </div>
+        </div>
+        <div class="card mx-2">
+            <div class="card-body">
+                <h5 class="card-title">WhatsApp</h5>
+                <br>
+                <p class="card-text">Chatea con nosotros desde nuestro número de WhatsApp. Te responderemos tan pronto como sea posible 😉</p>
+            </div>
+            <div class="card-footer">
+                <a href="">+56 9 7644 2546</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Pie de pagina del sitio web-->
+    <footer class="footer py-3">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sección sobre nosotros -->
+                <div class="col-md-4">
+                    <div class="about-us">
+                        <h5>Sobre nosotros</h5>
+                        <p>PetAmigos es la tienda en línea líder para todos los amantes de las mascotas. Ofrecemos una amplia gama de productos para todas las necesidades de tus amigos peludos.</p>
+                    </div>
+                </div>
+                <!-- Sección enlaces útiles -->
+                <div class="col-md-4 text-center">
+                    <h5 class="mb-3">Enlaces útiles</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'QuienesSomos' %}">Sobre nosotros</a></li>
+                        <li><a href="{% url 'ayuda' %}">Ayuda</a></li>
+                        <li><a href="{% url 'informacion' %}">Información</a></li>
+                    </ul>
+                </div>
+                <!-- Sección de redes sociales -->
+                <div class="col-md-4 text-center">
+                    <h5 class="mb-3">Síguenos</h5>
+                    <div class="d-flex justify-content-center flex-column align-items-center">
+                        <a href="#" class="mb-2"><img src="{% static 'img/twitter.svg' %}" alt="Twitter" class="social-icon"></a>
+                        <a href="#"><img src="{% static 'img/instagram.svg' %}" alt="Instagram" class="social-icon"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col text-center">
+                    <p>&copy; 2024 PetAmigos. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <script>
+        const moonIconPath = "{% static 'img/moon-solid.svg' %}";
+        const sunIconPath = "{% static 'img/sun-solid.svg' %}";
+    </script>   
+    <script src="{% static 'js/cambiarModoOscuro.js' %}"></script>   
+    <script src="{% static 'bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

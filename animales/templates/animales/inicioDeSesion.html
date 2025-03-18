@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesion</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+
+<style>
+        
+    @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
+    /* Estilo del contenedor del formulario */
+    .form-container {
+        width: 22%;
+        padding: 50px; /* Esto agrega un relleno de 70 píxeles en todas las direcciones dentro del contenedor. */
+        background-color: #171717;
+        position: relative;
+    }
+    
+    /* Estilo del divisor de etiquetas del formulario */
+    .form-label-divider {
+        margin-top: 10px; /* Ajusta el espacio superior según sea necesario */
+        padding-top: 20px; /* Ajusta el espacio superior según sea necesario */
+        width: 100%;
+    }
+    /* Estilo de la tarjeta */
+    .card {
+        border-radius: 20px 0 0 20px;
+    }
+    /* Estilo del contenedor central */
+    .center-container {
+        display: flex;  /*Esto establece el contenedor como un contenedor flexible, lo que permite utilizar las propiedades de alineación flexbox.*/
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    /* Estilo de la imagen dentro del contenedor central */
+    .center-container img {
+        border-radius: 0 20px 20px 0;
+    }
+    /* Estilo del botón circular */
+    .btn-circular {
+        border-radius: 10px;
+        height: 45px;
+    }
+    /* Estilo del elemento divlogo */
+    #divlogo {
+        color: rgb(255, 255, 255);
+        font-family: "Bungee", sans-serif;
+        font-size: 35px;
+        text-align: center;
+    }
+    /* Estilo de los botones con id btn1, btn2 y btn3 */
+    #btn1, #btn2, #btn3 {
+        text-align: left;
+    }
+    /* Estilo del elemento registro */
+    #registro {
+        text-align: center;
+        color: #ffffff;
+    }
+    
+    /* Estilo del botón login */
+    .btnlogin {
+        width: 110%;
+    }
+    /* Estilo del botón café */
+    .btn-cafe {
+        color: #ffffff;
+        background-color: #28292D; /* Color café */
+        width:  100%;
+    }
+    /* Estilo del botón café al pasar el mouse */
+    .btn-cafe:hover {
+        color: #ffffff;
+        background-color: #44433f; /* Color café más oscuro al pasar el ratón */
+    }
+
+    .btn-register {
+        background-color: #007bff; 
+        border-color: #007bff; 
+        color: #ffffff; 
+        margin-top: 10px; /* Ajuste el margen superior según sea necesario */
+        width: 100%;
+    }
+    
+    /* Estilo del botón de registro al pasar el mouse */
+    .btn-register:hover {
+        background-color: #0056b3; /* Color azul más oscuro al pasar el ratón */
+        border-color: #0056b3; /* Color del borde al pasar el ratón */
+        color: #ffffff; /* Color del texto al pasar el ratón */
+    }
+
+    /* Estilo de elementos con clases mb-3 y form-text */
+    .mb-3, .form-text {
+        color: #ffffff;
+    }
+    
+    /* Estilo de los controles de formulario */
+    .form-control {
+        background-color: #111111;
+        color: white;
+    }
+    /* Estilo de los inputs con id exampleInputEmail1 y exampleInputPassword1 */
+    #exampleInputEmail1, #exampleInputPassword1 {
+        background-color: #111111;
+    }
+
+    /* Estilo del placeholder del control de formulario */
+    .form-control::placeholder {
+        color: #ffffff;
+    }
+    
+    /* Estilo del cuerpo */
+    body {
+        background-image: url("/static/img/conejokawaii.png");
+    }
+
+
+</style>
+</head>
+<body>
+    <div class="center-container">
+        <div class="card form-container">
+            <form action="" method="POST" class="custom-form">
+                {% csrf_token %}
+                <div id="divlogo">
+                    <a class="navbar-brand" href="{% url 'index' %}">Pet Amigos</a>
+                </div>
+                <p id="registro">Registrarse o Ingresar con</p>
+                <div class="social-login mb-3"> <!-- Agrega margen inferior -->
+                    <div class="d-grid gap-2">
+                        <button id="btn1" class="btn btn-cafe" style="background-color: rgb(105, 100, 100);" type="button">
+                            <img src="{% static 'img/apple.png' %}" alt="apple" width="24px">
+                            Apple
+                        </button>
+                        <button id="btn2" class="btn btn-cafe" style="background-color: rgb(105, 100, 100);" type="button">
+                            <img src="{% static 'img/google.png' %}" alt="google" width="24px">
+                            Google
+                        </button>
+                        <button id="btn3" class="btn btn-cafe" style="background-color: rgb(105, 100, 100);" type="button">
+                            <img src="{% static 'img/microsoft.png' %}" alt="microsoft" width="24px">
+                            Microsoft
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group mb-3"> <!-- Agrega margen inferior -->
+                    <label for="id_username">Usuario</label>
+                    <input type="text" name="username" id="id_username" class="form-control" placeholder="Ingrese su usuario">
+                </div>
+
+                <div class="form-group mb-3"> <!-- Agrega margen inferior -->
+                    <label for="id_password">Contraseña</label>
+                    <input type="password" name="password" id="id_password" class="form-control" placeholder="Ingrese su contraseña">
+                </div>
+
+                <button type="submit" class="btn btn-cafe" style="background-color: rgb(105, 100, 100);">Ingresar</button>
+            </form>
+
+            <p style="color: white;">¿No tienes cuenta? <a href="{% url 'registro' %}" class="btn btn-secondary btn-register">Registrarse</a></p>
+        </div>
+        <img src="{% static 'img/conejokawaii.png' %}" alt="" width="1100px" height="626px">
+    </div>
+
+    
+    <!--Cargar jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="{% static 'bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+
+
+</body>
+</html>

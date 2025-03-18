@@ -1,0 +1,28 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #dc3545; /* Color de fondo rojo */
+    color: white; /* Color de texto blanco */
+    font-size: 1.25rem;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-danger:hover, .btn-secondary:hover {
+    opacity: 0.8;
+}

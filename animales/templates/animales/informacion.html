@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mas información</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_informacion.css' %}">
+
+
+</head>
+<body>
+<!--Este es el header de nuestra pagina web-->
+    <section class="container-mt-4">
+        <header>
+            <h5>Bienvenidos a nuestra pagina ¿Quieres saber quienes somos?</h5>
+            <a href="{% url 'QuienesSomos' %}">Presiona aquí para conocernos</a> 
+            <a href="{% url 'ayuda' %}">Sección de ayuda</a>  
+            <a href="{% url 'informacion' %}">Más de información</a>
+        </header>
+    </section>
+
+    <!--Navbar de la pagina web-->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a id="logo" class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'img/Logo.png' %}" width="45px" height="100px" alt="Logo">Pet Amigos
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="¿Qué productos estés buscando?" aria-label="Search">
+                    <button id="btnsearch" class="btn btn-outline-dark" type="submit">
+                        <img src="{% static 'img/search.svg' %}" alt="buscar">
+                    </button>
+                </form>
+
+                <li id="moon-dark" class="nav-item">
+                    <a id="darkModeToggle" class="nav-link active" href="javascript:void(0)">
+                        <img id="darkModeIcon" src="{% static 'img/moon-solid.svg' %}" alt="Modo Oscuro" style="width: 24px; height: 24px;">
+                        <span id="modeToggleText" style="color: #fdfcfc;">Modo Oscuro</span>
+                    </a>
+                </li>
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a id="sesion" class="nav-link active" aria-current="page" href="{% url 'inicioDeSesion' %}">Iniciar Sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'favoritos' %}">
+                            <img src="{% static 'img/heart.svg' %}" alt="favoritos">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'ver_carrito' %}">
+                            <img src="{% static 'img/shopping-cart.svg' %}" alt="compras">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--Navbar de las categorias-->
+    <nav id="navbarcategorias" class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Categorías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'productosPerro' %}">Perrunos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'productosGato' %}">Gatunos</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    🔥 ¡OBTÉN 10% DCTO!
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!--Contenedor para texto info de compras-->
+    <div id="compras">
+        <ul>
+            <li><h5>Compras Online</h5></li>
+            <li><h1>Despacho y retiro en tienda</h1></li>
+            <li><p>Infórmate sobre los tiempos y condiciones de despacho y retiro en nuestras sucursales.</p></li>
+        </ul>
+    </div>
+
+
+<!--Cards para info de despachos y retiros-->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Despacho a domicilio</h2>
+                <p>Aplica para días hábiles, no considera feriados ni fines de semana</p>
+            <div class="accordion-container">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            📦¿Cuándo llega mi pedido para RM? 
+                        </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">👉48 a 72 hrs HÁBILES para REGIÓN METROPOLITANA (no considera feriados ni fines de semana).</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            📦¿Cuando llega mi pedido a Regiones?
+                        </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body"> 👉<b>60 hrs HÁBILES en las comunas de:</b>
+                            <br>
+                            Concón, Copiapó, Chillán, Chillán Viejo, Concepción, Coquimbo, Coronel, Corral, Curicó, El Quisco, Hualpén, Illapel, Lanco, La Calera, La Ligua, La Serena, Limache, Linares, Los Ángeles, Los Andes, Los Vilos, Machalí, Olmué, Osorno, 
+                            Ovalle, Padre las Casas, Puerto Montt, Pucón, Quillota, Quilpué, Rancagua, San Antonio, San Carlos, San Fernando, San Felipe, San Pedro de la Paz, Santa Cruz, Talca, Talcahuano, Temuco, Valparaíso, Viña del Mar, Valdivia, Vallenar, Villarrica, Villa Alemana.
+                            <br>
+                            <br>
+                            
+                            👉<b>6 días HÁBILES en las comunas de:</b> 
+                            <br>
+                            Arica.
+                            
+                            <br>
+                            <br>
+                            
+                            👉<b>7 días HÁBILES en las comunas de:</b>
+                            <br>
+                            Aysén, Chaitén, Chile Chico, Cisnes, Futaleufú, Guaitecas.
+                        </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            🎁¿Como consigo Despacho Gratis?
+                        </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Llega en 48 a 72 hrs HÁBILES, por compras superiores a $25.000. Válido para las comunas de Región Metropolitana.</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <br>
+                <p> Considerar que las entregas se realizan en días hábiles en horario de 9:00 a 22:00 hrs.</p>
+            </div>
+            
+            <div class="col-md-6">
+                <h2>Retiro en tienda</h2>
+                <h4>Tu compra estará lista para retirar en:</h4>
+                <br>
+                <p>24 a 48 hrs hábiles (Se notificará una vez que esté listo el pedido para retiro)
+                </p>
+                <br>
+                <p>Retira tu pedido en nuestras sucursales, recuerda presentar tu CÉDULA DE IDENTIDAD al retirar.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Pie de pagina del sitio web-->
+    <footer class="footer py-3">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sección sobre nosotros -->
+                <div class="col-md-4">
+                    <div class="about-us">
+                        <h5>Sobre nosotros</h5>
+                        <p>PetAmigos es la tienda en línea líder para todos los amantes de las mascotas. Ofrecemos una amplia gama de productos para todas las necesidades de tus amigos peludos.</p>
+                    </div>
+                </div>
+                <!-- Sección enlaces útiles -->
+                <div class="col-md-4 text-center">
+                    <h5 class="mb-3">Enlaces útiles</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'QuienesSomos' %}">Sobre nosotros</a></li>
+                        <li><a href="{% url 'ayuda' %}">Ayuda</a></li>
+                        <li><a href="{% url 'informacion' %}">Información</a></li>
+                    </ul>
+                </div>
+                <!-- Sección de redes sociales -->
+                <div class="col-md-4 text-center">
+                    <h5 class="mb-3">Síguenos</h5>
+                    <div class="d-flex justify-content-center flex-column align-items-center">
+                        <a href="#" class="mb-2"><img src="{% static 'img/twitter.svg' %}" alt="Twitter" class="social-icon"></a>
+                        <a href="#"><img src="{% static 'img/instagram.svg' %}" alt="Instagram" class="social-icon"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col text-center">
+                    <p>&copy; 2024 PetAmigos. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        const moonIconPath = "{% static 'img/moon-solid.svg' %}";
+        const sunIconPath = "{% static 'img/sun-solid.svg' %}";
+    </script>   
+
+    <script src="{% static 'js/cambiarModoOscuro.js' %}"></script>   
+    <script src="{% static 'bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
