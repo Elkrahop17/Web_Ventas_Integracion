@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,6 +54,77 @@
                 <div class="text-end">
                     <h4>Total: ${{ pedido.total|floatformat:3 }}</h4>
                 </div>
+                <!-- Campo oculto para el valor total sin formato -->
+                <input type="hidden" id="monto_total_raw" value="{{ pedido.total }}">
             </div>
             <div class="card-footer text-center">
+                <!-- Botón para realizar el pago -->
+                <button id="pagar" class="btn btn-success">Realizar Pago</button>
                 <a href="{% url 'index' %}" class="btn btn-primary">Volver a la tienda</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('pagar').addEventListener('click', async () => {
+            try {
+                // Obtenemos el valor bruto del campo oculto
+                let rawAmount = document.getElementById('monto_total_raw').value;
+                
+                // Verificamos el formato original para depuración
+                console.log("Valor original:", rawAmount);
+                
+                // Aseguramos que no tenga puntos ni comas y sea un entero
+                rawAmount = rawAmount.toString().replace(/\./g, "").replace(/,/g, "");
+                
+                // Convertimos a número entero
+                const amount = Math.round(parseFloat(rawAmount) * 10); 
+
+                
+                // Verificamos el valor final para depuración
+                console.log("Monto a enviar a Transbank:", amount);
+                
+                const buyOrder = '{{ pedido.id }}'; // ID del pedido
+                const sessionId = 'session-{{ pedido.id }}'; // ID de sesión único
+                const returnUrl = 'http://localhost:8000/animales/carrito/'; // URL de retorno a Django
+    
+                // Enviar solicitud al backend de Node.js para crear la transacción
+                const response = await fetch('http://localhost:3000/create-transaction', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        amount,
+                        buyOrder,
+                        sessionId,
+                        returnUrl
+                    })
+                });
+    
+                // Verificamos si la respuesta es válida
+                if (!response.ok) {
+                    throw new Error(`Error en la transacción: ${response.status} ${response.statusText}`);
+                }
+    
+                const data = await response.json();
+    
+                // ✅ Consola para depuración
+                console.log("Respuesta de Transbank:", data);
+    
+                // Verificamos si se generó la URL de pago correctamente
+                if (data && data.url && data.token) {
+                    // 🔹 Redirigir al usuario a la URL de pago de Transbank con el token
+                    window.location.href = `${data.url}?token_ws=${data.token}`;
+                } else {
+                    throw new Error("No se recibió la URL o el token de Transbank.");
+                }
+            } catch (error) {
+                console.error("Error en el pago:", error);
+                alert('Hubo un error al crear la transacción. Intenta nuevamente.');
+            }
+        });
+    </script>
+    
+</body>
+</html>
