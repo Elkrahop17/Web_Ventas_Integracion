@@ -6,6 +6,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User 
 from django.http import HttpResponse
+from django.http import JsonResponse
+import requests
+
+
 
 # Create your views here.
 
@@ -307,3 +311,24 @@ def confirmacion_compra(request, pedido_id):
             item.subtotal = item.cantidad * item.producto_gatos.precio
 
     return render(request, 'animales/confirmacion_compra.html', {'pedido': pedido})
+
+def payment_return(request):
+    # Aquí recibirás los parámetros del pago, como el token de Transbank
+    token = request.GET.get('token', None)  # El token enviado por Transbank
+    status = request.GET.get('status', None)  # Estado del pago
+
+    # Aquí debes procesar la transacción
+    if token and status:
+        # Verificar que el token esté en la base de datos o hacer la validación necesaria
+        try:
+            pedido = Pedido.objects.get(id=request.GET.get('buyOrder'))  # Obtener el pedido basado en el 'buyOrder'
+            if status == 'success':  # Verificar el estado del pago
+                pedido.status = 'pagado'  # Actualizar el estado del pedidoz
+                pedido.save()
+                return render(request, 'confirmacion_pago.html', {'pedido': pedido})  # Mostrar la confirmación
+            else:
+                return render(request, 'error_pago.html', {'mensaje': 'Pago fallido'})
+        except Pedido.DoesNotExist:
+            return render(request, 'error_pago.html', {'mensaje': 'Pedido no encontrado'})
+    else:
+        return render(request, 'error_pago.html', {'mensaje': 'Datos de pago inválidos'})
